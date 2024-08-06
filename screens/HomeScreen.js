@@ -1,9 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import LottieView from "lottie-react-native";
 import React, { useRef } from "react";
+import { removeItem } from "../utilis/asyncStorage";
 
-export default function HomeScreen() {
-  const ref = useRef();
+export default function HomeScreen({ navigation }) {
+
+  const handleReset = async () => {
+    await removeItem('onboarded')
+    navigation.navigate('Onboarding')
+  }
 
   return (
     <View style={styles.container}>
@@ -13,7 +18,7 @@ export default function HomeScreen() {
         style={styles.lottie}
         source={require("../assets/animations/ValidationAnim.json")}
       />
-      <TouchableOpacity style={styles.resetButton}>
+      <TouchableOpacity onPress={handleReset} style={styles.resetButton}>
         <Text>HomeScreen</Text>
       </TouchableOpacity>
     </View>

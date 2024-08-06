@@ -2,11 +2,13 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import Onboarding from "react-native-onboarding-swiper";
 import LottieView from "lottie-react-native";
+import { setItem } from "../utilis/asyncStorage";
 
 export default function OnboardingScreen({navigation}) {
 
     const handleDone = () => {
         navigation.navigate('Home')
+        setItem('onboarded', '1')
     }
 
     const doneButton = () => {        
